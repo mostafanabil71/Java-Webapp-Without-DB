@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Greeting App</title>
+</head>
+<body>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" name="name">
+    <button onclick="generateGreeting()">Generate Greeting</button>
+    <p id="output"></p>
+    <script>
+        function generateGreeting() {
+            const name = document.getElementById("name").value;
+            fetch(`/greeting?name=${name}`)
+                .then(response => response.text())
+                .then(data => document.getElementById("output").textContent = data);
+        }
+    </script>
+</body>
+</html>
